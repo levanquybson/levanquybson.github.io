@@ -200,6 +200,27 @@
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
     }
+
+ footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      background: #f0f0f0;
+      color: #333;
+      border-top: 1px solid #ccc;
+
+      /* chống copy / bôi đen */
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+
+
+    
   </style>
 </head>
 <body>
@@ -305,6 +326,29 @@
   <footer class="footer">
     © 2025 Lê Văn Quý. All rights reserved.
   </footer>
+<meta charset="UTF-8">
+<footer id="copyright"></footer>
 
+<script>
+  // Base64 đúng (chữ Quý)
+  const b64Copyright = "TMOqIFbEg24gUXXDvSwgVEhQVCBCw6xuaCBTxqFuLCBRdeG6o25nIE5nw6Np";
+
+  const bytes = Uint8Array.from(atob(b64Copyright), c => c.charCodeAt(0));
+  const text  = new TextDecoder("utf-8").decode(bytes);
+
+  // Kiểm tra nhanh trên console: phải in đúng "© 2025 Lê Văn Quý+GPT. All rights reserved."
+  console.log(text);
+
+  document.getElementById("copyright").textContent = text;
+
+  // (tuỳ chọn) chặn chuột phải & Ctrl+C như bạn đã làm
+  document.addEventListener("contextmenu", e => e.preventDefault());
+  document.addEventListener("keydown", e => {
+    if (e.ctrlKey && e.key.toLowerCase() === "c") {
+      e.preventDefault();
+      alert("!");
+    }
+  });
+</script>
 </body>
 </html>
