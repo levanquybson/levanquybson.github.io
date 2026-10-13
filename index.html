@@ -220,6 +220,33 @@
     }
 
 
+.chao-mung {
+    font-size: 22px;
+    font-weight: bold;
+    white-space: nowrap;
+    display: inline-block;
+    animation: chay-qua-lai 6s ease-in-out infinite alternate;
+}
+
+.chao-mung .ky-tu {
+    display: inline-block;
+    animation: song-ky-tu 1s ease-in-out infinite;
+}
+
+@keyframes chay-qua-lai {
+    from { transform: translateX(-80px); }
+    to   { transform: translateX(80px); }
+}
+
+@keyframes song-ky-tu {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+}
+
+
+
+
+    
     
   </style>
 </head>
@@ -289,6 +316,43 @@
     <h1><strong>Lê Văn Quý</strong></h1>
     <p>Giáo viên Toán THPT Bình Sơn, Quảng Ngãi – Chia sẻ công cụ ứng dụng trong giảng dạy, tài liệu dạy học</p>
     <div class="marquee-container"><span>Đẳng cấp và phong độ là nhất thời, chỉ có phương trình là mãi mãi</span></div>
+ 
+  
+  
+  <div style="width:100%; overflow:hidden; text-align:center; padding:12px 0;">
+    <div class="chao-mung" id="dongChaoMung">
+        <span style="color:#FFD700;">
+            Nhiệt liệt chào mừng ngày
+        </span>
+        <span style="
+            color:#FFFFFF !important;
+            -webkit-text-fill-color:#FFFFFF !important;
+            font-weight:900;
+            
+        "> Phụ nữ Việt Nam 20/10</span>
+    </div>
+</div>
+
+<script>
+document.querySelectorAll('#dongChaoMung > span').forEach(span => {
+    const noiDung = span.textContent;
+    span.textContent = '';
+
+    [...noiDung].forEach((kyTu, i) => {
+        const s = document.createElement('span');
+        s.className = 'ky-tu';
+        s.innerHTML = kyTu === ' ' ? '&nbsp;' : kyTu;
+        s.style.animationDelay = `${i * 0.07}s`;
+        span.appendChild(s);
+    });
+});
+</script>
+
+  
+  
+  
+  
+  
   </div>
 
   <!-- Nội dung -->
